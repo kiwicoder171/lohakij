@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --font-prompt: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Official Brand Colors from Logo Stamp */
+  --brand-navy-dark: #0a1329;
+  --brand-navy: #0e204d;
+  --brand-navy-primary: #123274;
+  --brand-navy-light: #1b499e;
+  --brand-navy-accent: #2563eb;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Crisp Backgrounds & Surfaces */
+  --bg-page: #f8fafc;
+  --surface-card: #ffffff;
+  --border-card: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #475569;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-prompt);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+}
+
+.font-mono-data {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Industrial Grid for White/Navy Theme */
+.industrial-grid-light {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(14, 32, 77, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 32, 77, 0.04) 1px, transparent 1px);
+}
+
+/* Corporate Engineering Card (White + Deep Navy Border & Accent) */
+.corporate-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  position: relative;
+  box-shadow: 0 1px 3px 0 rgba(14, 32, 77, 0.05);
+}
+
+.corporate-card-hover {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.corporate-card-hover:hover {
+  border-color: #123274;
+  box-shadow: 0 4px 12px -2px rgba(18, 50, 116, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Technical Corner Markers in Navy */
+.corporate-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid #123274;
+  border-left: 2px solid #123274;
+  pointer-events: none;
+}
+
+.corporate-card::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid #123274;
+  border-right: 2px solid #123274;
+  pointer-events: none;
+}
+
+/* Navy Seal Ribbon Pattern */
+.navy-seal-strip {
+  background: repeating-linear-gradient(
+    -45deg,
+    #123274,
+    #123274 10px,
+    #0a1329 10px,
+    #0a1329 20px
+  );
 }
