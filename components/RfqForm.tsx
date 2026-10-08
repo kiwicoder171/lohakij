@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Send, CheckCircle2, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function RfqForm() {
   const { t } = useLanguage();
@@ -16,9 +16,27 @@ export default function RfqForm() {
     notes: "",
   });
 
+  const materialLabels: Record<string, string> = {
+    metals: "เศษโลหะ (ทองแดง, เหล็ก, สแตนเลส, อะลูมิเนียม)",
+    auction: "งานประมูลประจำปี / สัญญาโรงงาน",
+    demolition: "รื้อถอนอาคาร / โครงสร้าง / ปลดระวางเครื่องจักร",
+    packaging: "ไม้พาเลท / ถังน้ำมัน 200L / สินทรัพย์สำนักงาน",
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+  };
+
+  const getLinePrefillUrl = () => {
+    const text = `สวัสดีครับ สนใจประเมินราคาเศษวัสดุ (จากหน้าเว็บ เอส.บี โลหะกิจ)
+- ผู้ติดต่อ: ${formData.name || "-"}
+- เบอร์โทรศัพท์: ${formData.phone || "-"}
+- ประเภทงาน: ${materialLabels[formData.material] || formData.material}
+- ปริมาณ: ${formData.weight || "ยังไม่ระบุ"}
+- สถานที่: ${formData.location || "ยังไม่ระบุ"}
+- รายละเอียด: ${formData.notes || "-"}`;
+    return `https://line.me/ti/p/~0958269463?text=${encodeURIComponent(text)}`;
   };
 
   return (
@@ -36,13 +54,44 @@ export default function RfqForm() {
           </p>
         </div>
 
-        <div className="mt-10 max-w-3xl">
+        {/* Priority Action Callout: Mainly Telephone, LINE as follow-up */}
+        <div className="mt-8 max-w-3xl rounded border border-blue-200 bg-blue-50/70 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="font-mono-data text-[10px] font-bold uppercase tracking-wider text-[#123274]">
+              PRIORITY CHANNEL // โทรติดต่อด่วนที่สุด
+            </span>
+            <p className="text-xs sm:text-sm text-[#0a1329] font-bold">
+              ต้องการประเมินราคาเร่งด่วน หรือนัดดูหน้างานวันนี้ โทรสายตรงได้ทันที
+            </p>
+            <p className="text-xs text-slate-600">
+              โทรหาเราโดยตรง ทีมงานรับสาย 24 ชม. แล้วส่งรูปประกอบทาง LINE ต่อเนื่อง
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <a
+              href="tel:0958269463"
+              className="inline-flex items-center space-x-1.5 rounded bg-[#123274] px-4 py-2.5 text-xs font-bold text-white hover:bg-[#0e204d] shadow-xs font-mono-data"
+            >
+              <Phone className="size-3.5" />
+              <span>095-826-9463 (แขก)</span>
+            </a>
+            <a
+              href="tel:0637019999"
+              className="inline-flex items-center space-x-1.5 rounded border border-slate-300 bg-white px-4 py-2.5 text-xs font-bold text-[#0a1329] hover:bg-slate-50 font-mono-data"
+            >
+              <Phone className="size-3.5" />
+              <span>063-701-9999 (โฟล์ค)</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-8 max-w-3xl">
           <div className="corporate-card p-6 sm:p-8">
             {submitted ? (
               <div
                 role="status"
                 aria-live="polite"
-                className="text-center py-10 space-y-4"
+                className="text-center py-8 space-y-4"
               >
                 <div className="mx-auto flex size-12 items-center justify-center rounded border border-emerald-500/40 bg-emerald-50 text-emerald-700">
                   <CheckCircle2 className="size-6" />
@@ -51,23 +100,43 @@ export default function RfqForm() {
                   {t.rfq.successMsg}
                 </h3>
                 <p className="text-xs text-slate-600 max-w-md mx-auto">
-                  เจ้าหน้าที่ฝ่ายประเมินราคาจะโทรติดต่อกลับที่เบอร์ {formData.phone || "ที่คุณระบุ"} ภายใน 15 นาที
+                  เจ้าหน้าที่ฝ่ายประเมินราคาจะโทรติดต่อกลับที่เบอร์ {formData.phone || "ที่คุณระบุ"} โดยเร็วที่สุด
                 </p>
-                <div className="pt-3 flex flex-col sm:flex-row justify-center gap-2.5">
-                  <a
-                    href="https://line.me/ti/p/~0958269463"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center space-x-2 rounded bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-emerald-500 uppercase font-mono-data shadow-xs"
-                  >
-                    <MessageCircle className="size-3.5" />
-                    <span>ส่งรูปหน้างานต่อทาง LINE ทันที</span>
-                  </a>
+
+                {/* Next Step Options */}
+                <div className="pt-3 max-w-lg mx-auto space-y-3">
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded text-xs text-slate-700 text-left font-mono-data space-y-1">
+                    <div className="font-bold text-[#0e204d] uppercase mb-1">ข้อมูลที่คุณแจ้ง:</div>
+                    <div>• ผู้ติดต่อ: {formData.name}</div>
+                    <div>• เบอร์โทร: {formData.phone}</div>
+                    <div>• ประเภท: {materialLabels[formData.material] || formData.material}</div>
+                    {formData.location && <div>• สถานที่: {formData.location}</div>}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row justify-center gap-2.5 pt-2">
+                    <a
+                      href="tel:0958269463"
+                      className="inline-flex items-center justify-center space-x-2 rounded bg-[#123274] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0e204d] font-mono-data"
+                    >
+                      <Phone className="size-3.5" />
+                      <span>โทรคุยฝ่ายประมูลทันที: 095-826-9463</span>
+                    </a>
+                    <a
+                      href={getLinePrefillUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center space-x-2 rounded bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-emerald-500 uppercase font-mono-data shadow-xs"
+                    >
+                      <MessageCircle className="size-3.5" />
+                      <span>ส่งรูปหน้างานต่อทาง LINE ทันที</span>
+                    </a>
+                  </div>
+
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="rounded border border-slate-300 bg-slate-50 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:text-slate-900 font-mono-data"
+                    className="text-xs text-slate-500 underline hover:text-slate-800 pt-2"
                   >
-                    [+] กรอกข้อมูลใหม่
+                    กรอกข้อมูลชุดใหม่
                   </button>
                 </div>
               </div>
@@ -194,23 +263,34 @@ export default function RfqForm() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full rounded bg-[#123274] py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#0e204d] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#123274] focus:ring-offset-2 transition-all flex items-center justify-center space-x-2 shadow-sm"
-                >
-                  <Send className="size-3.5" />
-                  <span>{t.rfq.submitBtn}</span>
-                </button>
+                <div className="pt-1 flex flex-col sm:flex-row gap-2.5">
+                  <button
+                    type="submit"
+                    className="flex-1 rounded bg-[#123274] py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#0e204d] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#123274] focus:ring-offset-2 transition-all flex items-center justify-center space-x-2 shadow-xs"
+                  >
+                    <Phone className="size-3.5" />
+                    <span>แจ้งข้อมูลเพื่อนัดโทรกลับด่วน</span>
+                  </button>
 
-                <div className="pt-3 border-t border-slate-100 text-center flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-mono-data text-slate-600">
-                  <span>{t.rfq.lineAlt}</span>
+                  <a
+                    href="tel:0958269463"
+                    className="sm:w-auto inline-flex items-center justify-center space-x-2 rounded border border-[#123274] bg-white px-5 py-3 text-xs font-bold text-[#123274] hover:bg-blue-50 font-mono-data transition-colors"
+                  >
+                    <Phone className="size-3.5" />
+                    <span>โทรทันที: 095-826-9463</span>
+                  </a>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-mono-data text-slate-600">
+                  <span>ส่งรูปและพิกัดโรงงานทาง LINE ทันที:</span>
                   <a
                     href="https://line.me/ti/p/~0958269463"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-emerald-700 font-bold hover:underline"
+                    className="text-emerald-700 font-bold hover:underline inline-flex items-center space-x-1"
                   >
-                    แอด LINE ทันที &gt;&gt;
+                    <MessageCircle className="size-3.5 text-emerald-600" />
+                    <span>แอด LINE ส่งรูปหน้างาน &gt;&gt;</span>
                   </a>
                 </div>
               </form>

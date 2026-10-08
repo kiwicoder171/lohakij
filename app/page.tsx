@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBadges from "@/components/TrustBadges";
+import Gallery from "@/components/Gallery";
 import TrackRecord from "@/components/TrackRecord";
 import ServicesGrid from "@/components/ServicesGrid";
 import WorkProcess from "@/components/WorkProcess";
@@ -17,11 +18,12 @@ import FloatingContact from "@/components/FloatingContact";
 export default function Home() {
   return (
     <LanguageProvider>
-      <div className="relative min-h-screen bg-[#0c0e12] text-slate-200 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950">
+      <div className="relative min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-[#123274] selection:text-white">
         <Navbar />
         <main id="main-content" className="flex-1 focus:outline-none">
           <Hero />
           <TrustBadges />
+          <Gallery />
           <TrackRecord />
           <ServicesGrid />
           <WorkProcess />
