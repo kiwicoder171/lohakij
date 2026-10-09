@@ -129,11 +129,13 @@ export const translations = {
       ],
     },
     coverage: {
-      tag: "SERVICE AREAS",
+      tag: "SERVICE AREAS & LOCATION",
       title: "สำนักงานใหญ่ขอนแก่น พร้อมบริการทั่วประเทศ",
       subtitle:
         "เรามีกองยานพาหนะและเครื่องจักรพร้อมเข้าบริการทุกนิคมอุตสาหกรรมในภาคอีสาน ภาคตะวันออก (EEC) ภาคกลาง และทั่วประเทศไทย",
-      hq: "สำนักงานใหญ่: จังหวัดขอนแก่น",
+      hq: "สำนักงานใหญ่: 234 หมู่ 10 บ้านวังชัย ต.วังชัย อ.น้ำพอง จ.ขอนแก่น 40140",
+      mapsUrl: "https://maps.app.goo.gl/agvZpL8bCXbgR38A9",
+      openInMaps: "เปิดแผนที่ Google Maps นำทาง",
       coverageList: [
         "ภาคตะวันออกเฉียงเหนือ (ขอนแก่น โคราช อุดรธานี อุบลราชธานี ฯลฯ)",
         "ภาคตะวันออก & EEC (ชลบุรี ระยอง ฉะเชิงเทรา ปราจีนบุรี)",
@@ -181,7 +183,7 @@ export const translations = {
       servicesList: "หมวดหมู่งาน",
       legalInfo: "ข้อมูลนิติบุคคล",
       taxId: "เลขทะเบียนนิติบุคคล 0115558009992",
-      hqLocation: "สำนักงานใหญ่: ขอนแก่น ประเทศไทย",
+      hqLocation: "234 หมู่ 10 บ้านวังชัย ต.วังชัย อ.น้ำพอง จ.ขอนแก่น 40140",
       copyright: "© 2015 - 2026 บริษัท เอส.บี โลหะกิจ จำกัด สงวนลิขสิทธิ์ทุกประการ",
     },
   },
@@ -313,11 +315,13 @@ export const translations = {
       ],
     },
     coverage: {
-      tag: "SERVICE AREAS",
+      tag: "SERVICE AREAS & LOCATION",
       title: "Khon Kaen HQ with Nationwide Capability",
       subtitle:
         "Our specialized fleet and equipment operate across all major industrial estates in Isan, the Eastern Seaboard (EEC), Central Thailand, and beyond.",
-      hq: "Headquarters: Khon Kaen Province, Thailand",
+      hq: "Headquarters: 234 Moo 10, Ban Wang Chai, Wang Chai, Nam Phong, Khon Kaen 40140",
+      mapsUrl: "https://maps.app.goo.gl/agvZpL8bCXbgR38A9",
+      openInMaps: "Open Google Maps Navigation",
       coverageList: [
         "Northeast Region (Khon Kaen, Korat, Udon Thani, Ubon Ratchathani, etc.)",
         "Eastern Seaboard & EEC (Chonburi, Rayong, Chachoengsao, Prachinburi)",
@@ -365,7 +369,7 @@ export const translations = {
       servicesList: "Services",
       legalInfo: "Corporate Info",
       taxId: "Corporate Registration No: 0115558009992",
-      hqLocation: "Headquarters: Khon Kaen, Thailand",
+      hqLocation: "234 Moo 10, Ban Wang Chai, Wang Chai, Nam Phong, Khon Kaen 40140",
       copyright: "© 2015 - 2026 S.B. LOHAKIJ CO., LTD. All Rights Reserved.",
     },
   },

@@ -90,7 +90,14 @@ export default function Footer() {
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin className="size-3.5 text-blue-400 shrink-0 mt-0.5" />
-                <span>{t.footer.hqLocation}</span>
+                <a
+                  href={t.coverage.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-300 hover:underline transition-colors"
+                >
+                  {t.footer.hqLocation} (คลิกดูแผนที่)
+                </a>
               </div>
               <div className="flex items-start space-x-2">
                 <Phone className="size-3.5 text-blue-400 shrink-0 mt-0.5" />
