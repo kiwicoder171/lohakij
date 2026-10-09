@@ -3,10 +3,12 @@
 import React from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import { useLineModal } from "@/context/LineModalContext";
 import { ArrowRight, MessageCircle, Phone, CheckSquare, Award } from "lucide-react";
 
 export default function Hero() {
   const { t } = useLanguage();
+  const { openLineModal } = useLineModal();
 
   return (
     <section className="relative border-b border-slate-200 bg-white industrial-grid-light pt-10 pb-16 sm:pt-14 sm:pb-20">
@@ -56,9 +58,13 @@ export default function Hero() {
             {/* Actions Bar */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <a
-                href="https://line.me/ti/p/~0958269463"
+                href="https://line.me/ti/p/lxRmbEaYGw"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openLineModal();
+                }}
                 className="flex items-center justify-center space-x-2 rounded bg-emerald-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-emerald-500 shadow-sm transition-colors"
               >
                 <MessageCircle className="size-4" />

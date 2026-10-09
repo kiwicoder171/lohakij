@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useLineModal } from "@/context/LineModalContext";
 import { Phone, MessageCircle, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function RfqForm() {
   const { t } = useLanguage();
+  const { openLineModal } = useLineModal();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -29,14 +31,7 @@ export default function RfqForm() {
   };
 
   const getLinePrefillUrl = () => {
-    const text = `สวัสดีครับ สนใจประเมินราคาเศษวัสดุ (จากหน้าเว็บ เอส.บี โลหะกิจ)
-- ผู้ติดต่อ: ${formData.name || "-"}
-- เบอร์โทรศัพท์: ${formData.phone || "-"}
-- ประเภทงาน: ${materialLabels[formData.material] || formData.material}
-- ปริมาณ: ${formData.weight || "ยังไม่ระบุ"}
-- สถานที่: ${formData.location || "ยังไม่ระบุ"}
-- รายละเอียด: ${formData.notes || "-"}`;
-    return `https://line.me/ti/p/~0958269463?text=${encodeURIComponent(text)}`;
+    return "https://line.me/ti/p/lxRmbEaYGw";
   };
 
   return (
@@ -125,10 +120,14 @@ export default function RfqForm() {
                       href={getLinePrefillUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        openLineModal();
+                      }}
                       className="inline-flex items-center justify-center space-x-2 rounded bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-emerald-500 uppercase font-mono-data shadow-xs"
                     >
                       <MessageCircle className="size-3.5" />
-                      <span>ส่งรูปหน้างานต่อทาง LINE ทันที</span>
+                      <span>ส่งรูปหน้างานต่อทาง LINE (QR / ID)</span>
                     </a>
                   </div>
 
@@ -282,15 +281,19 @@ export default function RfqForm() {
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-mono-data text-slate-600">
-                  <span>ส่งรูปและพิกัดโรงงานทาง LINE ทันที:</span>
+                  <span>ส่งรูปและพิกัดโรงงานทาง LINE ทันที (ID: 0813722218.folk.folk):</span>
                   <a
-                    href="https://line.me/ti/p/~0958269463"
+                    href="https://line.me/ti/p/lxRmbEaYGw"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openLineModal();
+                    }}
                     className="text-emerald-700 font-bold hover:underline inline-flex items-center space-x-1"
                   >
                     <MessageCircle className="size-3.5 text-emerald-600" />
-                    <span>แอด LINE ส่งรูปหน้างาน &gt;&gt;</span>
+                    <span>แอด LINE ส่งรูปหน้างาน (QR / ID) &gt;&gt;</span>
                   </a>
                 </div>
               </form>

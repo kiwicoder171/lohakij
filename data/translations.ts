@@ -173,7 +173,9 @@ export const translations = {
       person2Name: "คุณโฟล์ค (Folk)",
       person2Role: "ผู้จัดการฝ่ายจัดซื้อ & ความสัมพันธ์ลูกค้า",
       person2Phone: "063-701-9999",
-      lineNotice: "LINE: สามารถค้นหาด้วยเบอร์โทรศัพท์ทั้ง 2 เบอร์ข้างต้นได้ทันที",
+      lineId: "0813722218.folk.folk",
+      lineUrl: "https://line.me/ti/p/lxRmbEaYGw",
+      lineNotice: "LINE ID: 0813722218.folk.folk หรือสแกน QR Code เพื่อส่งรูปประเมินราคา",
       officeHours: "เวลาทำการ: จันทร์ - อาทิตย์ (08:00 - 18:00 น.) ยินดีรับสาย 24 ชม. สำหรับงานด่วน",
     },
     footer: {
@@ -359,7 +361,9 @@ export const translations = {
       person2Name: "Khun Folk",
       person2Role: "Procurement & Client Relations Manager",
       person2Phone: "063-701-9999",
-      lineNotice: "LINE: Search via phone number for both numbers above.",
+      lineId: "0813722218.folk.folk",
+      lineUrl: "https://line.me/ti/p/lxRmbEaYGw",
+      lineNotice: "LINE ID: 0813722218.folk.folk or scan QR code to send scrap photos",
       officeHours: "Hours: Monday - Sunday (08:00 - 18:00). 24/7 hotline for urgent enterprise bidding.",
     },
     footer: {

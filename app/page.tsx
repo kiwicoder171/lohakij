@@ -2,6 +2,7 @@
 
 import React from "react";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { LineModalProvider } from "@/context/LineModalContext";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBadges from "@/components/TrustBadges";
@@ -18,22 +19,24 @@ import FloatingContact from "@/components/FloatingContact";
 export default function Home() {
   return (
     <LanguageProvider>
-      <div className="relative min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-[#123274] selection:text-white">
-        <Navbar />
-        <main id="main-content" className="flex-1 focus:outline-none">
-          <Hero />
-          <TrustBadges />
-          <Gallery />
-          <TrackRecord />
-          <ServicesGrid />
-          <WorkProcess />
-          <CoverageMap />
-          <RfqForm />
-          <Contact />
-        </main>
-        <Footer />
-        <FloatingContact />
-      </div>
+      <LineModalProvider>
+        <div className="relative min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-[#123274] selection:text-white">
+          <Navbar />
+          <main id="main-content" className="flex-1 focus:outline-none">
+            <Hero />
+            <TrustBadges />
+            <Gallery />
+            <TrackRecord />
+            <ServicesGrid />
+            <WorkProcess />
+            <CoverageMap />
+            <RfqForm />
+            <Contact />
+          </main>
+          <Footer />
+          <FloatingContact />
+        </div>
+      </LineModalProvider>
     </LanguageProvider>
   );
 }
