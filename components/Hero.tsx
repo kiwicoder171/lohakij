@@ -11,9 +11,9 @@ export default function Hero() {
   return (
     <section className="relative border-b border-slate-200 bg-white industrial-grid-light pt-10 pb-16 sm:pt-14 sm:pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Main Proposition (Left 7 Cols) */}
-          <div className="lg:col-span-7 space-y-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Main Proposition (Left 7.5 Cols) */}
+          <div className="lg:col-span-7 xl:col-span-8 space-y-5">
             {/* Stamp Logo & Status Pill */}
             <div className="flex items-center space-x-3">
               <div className="relative size-12 sm:size-14 overflow-hidden rounded-full border-2 border-[#123274] bg-white p-0.5 shadow-sm shrink-0">
@@ -34,14 +34,19 @@ export default function Hero() {
             </div>
 
             {/* Structured Headline */}
-            <h1 className="text-2xl sm:text-4xl lg:text-[2.6rem] font-extrabold text-[#0a1329] tracking-normal leading-[1.35] sm:leading-[1.3] text-balance">
-              <span className="text-[#123274] block pb-1 sm:pb-2">
-                {t.hero.titleHighlight}
+            <div className="border-l-4 border-[#123274] pl-4 sm:pl-5 space-y-2">
+              <span className="inline-block font-mono-data text-xs font-bold uppercase tracking-wider text-[#123274] bg-blue-50/80 px-2.5 py-1 rounded border border-blue-200/80">
+                INDUSTRIAL RECYCLING & DEMOLITION CONTRACTOR
               </span>
-              <span className="text-slate-900 block font-bold">
-                {t.hero.titleMain}
-              </span>
-            </h1>
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-black text-[#0a1329] leading-[1.28] tracking-normal">
+                <span className="text-[#123274] block">
+                  {t.hero.titleHighlight}
+                </span>
+                <span className="text-slate-900 block font-extrabold mt-1">
+                  {t.hero.titleMain}
+                </span>
+              </h1>
+            </div>
 
             {/* Description */}
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed text-pretty max-w-2xl">
@@ -87,8 +92,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Technical Spec Instrumentation Box (Right 5 Cols) */}
-          <div className="lg:col-span-5 space-y-3">
+          {/* Technical Spec Instrumentation Box (Right Cols) */}
+          <div className="lg:col-span-5 xl:col-span-4 space-y-3">
             <div className="corporate-card p-5 sm:p-6 space-y-4">
               <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <span className="font-mono-data text-xs uppercase font-bold text-[#0e204d]">
